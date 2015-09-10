@@ -7,7 +7,7 @@
  */
 
 String.prototype.insertDots = function(str, index) {
-  // TODO: この変数の中身を作ってください
+  str = str.substring(0, index) + (str.substring(index, str.length)).replace(str.charAt(index), '...');
   return　str;
 };
 
@@ -18,15 +18,15 @@ console.log(myVoice);
 function toVoiceInsideYourHeart(phrase) {
   var max_num = 20;
   var num = max_num;
-  for (var i = 0; i < phrase.length; i++) {
-    if (phrase.charAt(i) == '。' || phrase.charAt(i) == '，') {
+  for (var i = 0; i < phrase.length; i++) {//文字列の長さ分ループ
+    if (phrase.charAt(i) == '。' || phrase.charAt(i) == '，') {//文字列の文字が "。"または","だった場合
       phrase = phrase.substring(0, i) + (phrase.substring(i, phrase.length)).replace(phrase.charAt(i), '...');
       num = max_num;
-      i += 0; // TODO: 0の代わりに，正しい数値を入れてください
-    } else if (phrase.charAt(i - 1) == '？' || Math.floor(Math.random() * num) < -1) {　// TODO: 条件式の右辺の -1 を自分が最適だと感じる数値に調整してください。
+      i += 3; // TODO: 0の代わりに，正しい数値を入れてください
+    } else if (phrase.charAt(i - 1) == '？' || Math.floor(Math.random() * num) < 5) {　// TODO: 条件式の右辺の -1 を自分が最適だと感じる数値に調整してください。
       phrase = phrase.insertDots(phrase, i);
       num = max_num;
-      i += 0; // TODO: 0の代わりに，正しい数値を入れてください
+      i += 3; // TODO: 0の代わりに，正しい数値を入れてください
     }
     num--;
   }
