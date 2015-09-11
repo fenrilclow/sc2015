@@ -22,7 +22,7 @@ var htmlHeader = '<!DOCTYPE html>\
 var htmlMainForm = '<div class="main-form">\
   <form method="post" action="/">\
     <div>\
-      <label>YourName：<input type="text" name="name" size="20"></label>\
+      <label>YourName：<input ty+.pe="text" name="name" size="20"></label>\
     </div>\
     <div>\
       Birthday：\
@@ -101,12 +101,12 @@ function onRequest(request, response) {
     // 16進数で表現されたMD5ハッシュの1、2文字目を取り出し
     // 整数に変換する
     var fortuneKey = Number('0x' + hashValue.slice(0, 2));
-    var testerdayseed = query.name + query.year + query.month
+    var tommorowseed = query.name + query.year + query.month
       + query.day + query.sex + hiduke.getFullYear() + (hiduke.getMonth() + 1) + (hiduke.getDate() + 1);
     hash = crypto.createHash('md5');
-    hash.update(testerdayseed);
+    hash.update(tommorowseed);
     hashValue = hash.digest('hex');
-    var testerdayfkey = Number('0x' + hashValue.slice(0, 2));
+    var tommorowfkey = Number('0x' + hashValue.slice(0, 2));
     // fortuneKeyの値に応じて占い結果を生成する
     // fortuneKeyにはデータに応じた0〜255の値が入っている
     var result = '';
@@ -125,7 +125,7 @@ function onRequest(request, response) {
     }
 
     var yresult = '';
-    if(fortuneKey <= testerdayfkey){
+    if(fortuneKey <= tommorowfkey){
       tresult = '明日は今日より良い日になるかもしれません';
     }else{
       tresult = '明日は今日より悪い日になるかもしれません';
