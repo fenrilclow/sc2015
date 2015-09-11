@@ -35,6 +35,12 @@ function analyzeRSS(xml) {
     for (var i in items) {
       var item = items[i];
       console.log(item);
+
+      response.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
+      response.write(htmlHeader);
+      response.write(item);
+      response.write(htmlFooter);
+      response.end();
     }
   })
 }
